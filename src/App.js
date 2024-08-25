@@ -24,7 +24,7 @@ function App() {
 
   const [data, setData] = useState([])
   useEffect(()=>{
-    fetch('https://api.escuelajs.co/api/v1/products')
+    fetch('https://fakestoreapi.com/products')
     .then((res) => res.json())
     .then((data)=>{
       console.log(data)
@@ -38,17 +38,15 @@ function App() {
         {data.map((data)=>(
             <div key={data.id} className="bg-white h-[450px] text-black rounded-xl">
             <div className='h-56 bg-indigo-500 flex justify-center items-center rounded-t-xl'>
-              {data.images[0] ? (
-                <img src={data.images[0]
-                  .replace('[&quot;', '')
-                  .replace('&quot;', '')} alt="" className="h-44 w-44 rounded-full"/>
+              {data.image ? (
+                <img src={data.image} alt="" className="h-44 w-44 rounded-full"/>
               ) : (
                 <Logo className="h-44 w-44 rounded-full"/>
               )}
             </div>
 
             <div className="flex flex-col items-center justify-center gap-4 p-4">
-              <p className="text-xl font-semibold">{truncateText(data.title, 2)}</p>
+              <p className="text-xl font-semibold">{truncateText(data.category, 2)}</p>
               <p className="text-center">{truncateText(data.description, 15)}</p>
               <button className='bg-indataigo-500 text-white text-lg px-6 py-1 rounded-xl'>Read More</button>
             </div>
